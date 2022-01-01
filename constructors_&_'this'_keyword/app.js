@@ -12,6 +12,8 @@ const abozigi = new userdata('Abozigi', `kicking123@`);
 
 const richard = new userdata('Baddest419','flybwouy3310');
 
+const maame = new userdata('shanelle','bumblebee');
+
 
 
 // console.log(abozigi);
