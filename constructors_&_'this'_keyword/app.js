@@ -1,22 +1,15 @@
 //creating a constructor
 
-function userdata(username ,password){
-    this.userId=username;
-    this.userPass=password;
+function person(fname,dob){
+    this.firstname=fname;
+    this.birthday= new Date(dob);
 
-    
+    //creating a method in the constructor.  An object is 
+    const mymethodGetDate = function(){
+  
+    }
 }
 
+const petersDet =new person('peter','06/30/1999');
 
-const abozigi = new userdata('Abozigi', `kicking123@`);
-
-const richard = new userdata('Baddest419','flybwouy3310');
-
-const maame = new userdata('shanelle','bumblebee');
-
-
-
-// console.log(abozigi);
-
-
-// console.log(richard);
+console.log(petersDet);
