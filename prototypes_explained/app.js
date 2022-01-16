@@ -1,22 +1,23 @@
 //object prototype
-//person prototype
+//person.prototype
 
 
 //person constructor
 
-function Person(firstname,lastName, dob){
-    this.firstname= firstname;
-    this.lastName= lastName;
-    this.birthday = new Date(dob);
-    this.calculateAge = function(){
-      const diff = Date.now()-this.birthday.getFullYear();
-      const ageDate = new Date(diff);
-      const year = ageDate.getUTCFullYear()-this.birthday.getFullYear();
-      return Math.abs(year)
-    }
+function Person(firstname,lastname,dob){
+  this.fname = firstname;
+  this.lname = lastname ;
+  this.dateOfBirth = new  Date(dob);
 }
 
+const kobby=  new Person('Ransford','Sasu', '6-3-1998')
+//Calculate age 
+ Person.prototype.calculateAge= function(){
+  const diff = Date.now()-this.dateOfBirth.getFullYear();
+    const ageDate = new Date(diff);
+   const year = ageDate.getUTCFullYear()-this.dateOfBirth.getFullYear();
+   return Math.abs(year)
+ };
 
-const john = new Person('john','doe','8-12-1990')
 
-console.log(john.calculateAge());
+console.log(kobby.calculateAge());

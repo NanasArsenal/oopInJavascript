@@ -6,7 +6,7 @@
 function getAge(dob){
   this.birthday = new Date(dob);
 
-  this.calculateAge= function(){
+  this.calculateAge= () => {
       const diff = Date.now()-this.birthday.getFullYear();
       const ageDate = new Date(diff);
       const year = ageDate.getUTCFullYear()-this.birthday.getFullYear();
@@ -27,7 +27,7 @@ function getAge(dob){
        checkageBtn = document.querySelector('.check-age'),
        ageUi= document.querySelector('.age');
 
-form.addEventListener('submit',function(e){
+form.addEventListener('submit',(e)=>{
 
   const userage=new getAge(dateofbirth.value);
   ageUi.value= userage.calculateAge();
