@@ -25,3 +25,21 @@ function Customer(firstName,lastName, phone , membership ){
     this.phone =phone;
     this.membership = membership;
 }
+
+const customer1 = new Customer('Douglas','Thompson','555-555-5555','Premium')
+
+console.log(customer1);
+
+//constructor for student
+
+function Student(firstName,lastName,studentId,studentProgram){
+    Person.call(this,firstName,lastName);
+
+    this.studentId = studentId;
+    this.studentProgram = studentProgram;
+
+}
+
+const sheriff = new Student('Abdul', 'Sheriff', 10661598, 'Computer Science')
+
+console.log(sheriff);
