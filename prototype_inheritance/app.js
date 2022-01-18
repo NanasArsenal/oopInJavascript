@@ -40,6 +40,6 @@ function Student(firstName,lastName,studentId,studentProgram){
 
 }
 
-const sheriff = new Student('Abdul', 'Sheriff', 10661598, 'Computer Science')
+const sheriff = new Student('Abdul', 'Sheriff', 10661598, 'Computer Science');
 
 console.log(sheriff);
