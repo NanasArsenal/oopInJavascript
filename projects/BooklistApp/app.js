@@ -11,7 +11,15 @@ function UI(){}
 
 // ADD BOOK TO LIST  
 UI.prototype.addBookList = function(thebook){
-    console.log(thebook);
+    const list = document.getElementById('book-list');
+
+    //create tr element
+    const tablerow = document.createElement('tr');
+
+    //append table row to list
+    list.appendChild(tablerow);
+
+    
 }
 
 
@@ -33,6 +41,8 @@ document.getElementById('book-form').addEventListener('submit',
 
     //adding book to the list
     ui.addBookList(a_book)
+
+    console.log (ui);
 
 
 
