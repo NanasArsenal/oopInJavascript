@@ -1,50 +1,55 @@
-//Book Constructor
-function  Book(title, author, isbn){
+//create a book constructor 
+
+function Book(title,author,isbn){
     this.title = title;
     this.author = author;
     this.isbn = isbn ;
 }
 
+//UI CONSTRUCTOR MANAGES THE OBJECTS RESPONSIBLE FOR UI CHANGES
 
-//UI Constructor
 function UI(){}
 
-// ADD BOOK TO LIST  
-UI.prototype.addBookList = function(thebook){
-    const list = document.getElementById('book-list');
+UI.prototype.addBooktoList = function(book){
+    //get booklist
+    const booklist = document.getElementById('book-list');
 
-    //create tr element
+    //create a row for abook
     const tablerow = document.createElement('tr');
 
-    //append table row to list
-    list.appendChild(tablerow);
+    tablerow.innerHTML = `
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.isbn}</td>
+            <td><a href="#" class="delete">X</a></td>
+    `
 
-    
+    booklist.appendChild(tablerow);
+
+
 }
 
 
 
-//Events listeners
 document.getElementById('book-form').addEventListener('submit',
+    function(e){
 
- function(e){
-   //get form fields
-    const title = document.getElementById('title').value,
-          author = document.getElementById('author').value,
-          isbn = document.getElementById('isbn').value;  
+        //get formfields
 
-    //Creating a instance of the Book constructor 
-    const a_book = new Book(title,author,isbn);
-
-    //Creating an instance of the UI constructor
-    const ui = new UI();
-
-    //adding book to the list
-    ui.addBookList(a_book)
-
-    console.log (ui);
+        const title = document.getElementById('title').value,
+              author = document.getElementById('author').value,
+              isbn = document.getElementById('isbn').value;
 
 
+        //create an instance of the book constructor
+        const book =new Book(title,author,isbn);   
+        
+        //create an instance of the UI constructor
+        const ui = new UI;
 
-    e.preventDefault();
-})
+        ui.addBooktoList(book);
+
+
+        e.preventDefault();
+    }
+)
