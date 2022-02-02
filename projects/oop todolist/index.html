@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP todo list</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style>
+        .alert{
+            color: aliceblue;
+            padding: 5px;
+            margin: 5px 0 15px 0;
+        }
+
+        .success{
+            background: green;
+        }
+
+        .error{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OOP Todo-List</h1>
+
+        <form id="todo-form">
+            <div>
+                <label for="todo-input">Todo-Input</label>
+                <input type="text" class="u-full-width" id="todo-input">
+            </div>
+
+            <div>
+                <label for="Deadline">Deadline</label>
+                <input type="date" class="u-full-width" id="deadline">
+            </div>
+
+            <div>
+                <input type="submit" value="Add task Todo">
+            </div>
+        </form>
+
+        <hr>
+
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Task Todo</th>
+                    <th>Deadline</th>   
+                </tr>
+            </thead>
+
+            <tbody id="todo-list">
+
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

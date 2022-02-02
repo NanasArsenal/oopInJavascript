@@ -26,8 +26,7 @@ UI.prototype.addBooktoList = function(book){
     `;
 
     list.appendChild(tablerow);
-        console.log(tablerow);
-
+        
 }
 
 
@@ -65,7 +64,35 @@ UI.prototype.showAlert = function(message , clasName){
 
 
 
-//Event listeners
+
+
+// Delete book from list method
+
+UI.prototype.deleteBook= function(target){
+    if(target.className === 'delete'){
+      target.parentElement.parentElement.remove();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Event listeners for submit
 
     document.getElementById('book-form').addEventListener('submit',
         function(e){
@@ -98,4 +125,22 @@ UI.prototype.showAlert = function(message , clasName){
 
 
             e.preventDefault();
+        });
+
+        //Event listner for delete
+
+        document.getElementById('book-list').addEventListener('click',
+        function(e){
+            //instantiate Ui
+            const ui = new UI();
+
+
+            //deleting book
+            ui.deleteBook(e.target);
+
+
+            ui.showAlert('Successfully deleted', 'success')
+
+            e.preventDefault(); 
         })
+       
