@@ -1,55 +1,101 @@
-//create a book constructor 
-
+//create book constructor
 function Book(title,author,isbn){
     this.title = title;
     this.author = author;
-    this.isbn = isbn ;
+    this.isbn = isbn;
 }
 
-//UI CONSTRUCTOR MANAGES THE OBJECTS RESPONSIBLE FOR UI CHANGES
 
+//create a constructor for UI changes
 function UI(){}
 
+//Add book to List
 UI.prototype.addBooktoList = function(book){
-    //get booklist
-    const booklist = document.getElementById('book-list');
+    //get list
+    const list = document.getElementById('book-list')
 
-    //create a row for abook
+    //create table row
     const tablerow = document.createElement('tr');
 
     tablerow.innerHTML = `
-            <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>${book.isbn}</td>
-            <td><a href="#" class="delete">X</a></td>
-    `
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.isbn}</td>
+    <td><a href="#" class="delete">X</a></td>
+    
+    `;
 
-    booklist.appendChild(tablerow);
-
+    list.appendChild(tablerow);
+        console.log(tablerow);
 
 }
 
 
+UI.prototype.clearFields = function (){
+     document.getElementById('title').value ='';
+     document.getElementById('author').value= '';
+     document.getElementById('isbn').value = '';
 
-document.getElementById('book-form').addEventListener('submit',
-    function(e){
+}
 
-        //get formfields
+// Show Alert
+UI.prototype.showAlert = function(message , clasName){
+    //Create div
+    const div = document.createElement('div');
+    
 
-        const title = document.getElementById('title').value,
-              author = document.getElementById('author').value,
-              isbn = document.getElementById('isbn').value;
+    //Add classes
+    div.className = `alert ${clasName}`;
+
+    //add text
+    div.appendChild(document.createTextNode(message));
+   
+
+    //Get the parent which is the container to display inside of it 
+    const container = document.querySelector('.container');
+    const form = document.getElementById('book-form');
+
+    container.insertBefore(div,form);
+    // Time out 
+    setTimeout(function(){
+        document.querySelector('.alert').remove();
+    }, 2000);
+}
 
 
-        //create an instance of the book constructor
-        const book =new Book(title,author,isbn);   
-        
-        //create an instance of the UI constructor
-        const ui = new UI;
-
-        ui.addBooktoList(book);
 
 
-        e.preventDefault();
-    }
-)
+//Event listeners
+
+    document.getElementById('book-form').addEventListener('submit',
+        function(e){
+            //get values from the form by creating variables
+
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const isbn = document.getElementById('isbn').value;
+
+            //create book instance and put the values from the table init
+            const book = new Book(title,author,isbn);
+
+            //create instabce of Ui
+            const ui = new UI();
+
+            //Validate
+            if(title === ' ' || author === '' || isbn === ''){
+            ui.showAlert('Please fill in all fields' , 'error');
+            } else{
+                //Add book to List
+                ui.addBooktoList(book);
+
+                //clear fields
+                ui.clearFields(); 
+
+                ui.showAlert('Success', 'success')
+            }
+
+            //remove book from list
+
+
+            e.preventDefault();
+        })
