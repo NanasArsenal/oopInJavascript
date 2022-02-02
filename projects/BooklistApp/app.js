@@ -38,13 +38,13 @@ UI.prototype.clearFields = function (){
 }
 
 // Show Alert
-UI.prototype.showAlert = function(message , clasName){
+UI.prototype.showAlert = function(message , className){
     //Create div
     const div = document.createElement('div');
     
 
     //Add classes
-    div.className = `alert ${clasName}`;
+    div.className = `alert ${className}`;
 
     //add text
     div.appendChild(document.createTextNode(message));

@@ -27,6 +27,43 @@ UI.prototype.addTodoTask = function(todotask){
 
 
 
+UI.prototype.clearFields= function(){
+    document.getElementById('todo-input').value = '';
+    deadline = document.getElementById('deadline').value = '';
+}
+
+
+UI.prototype.deleteTasks = function(target){
+    if(target.className === 'delete'){
+        target.parentElement.parentElement.remove();
+    }
+}
+
+
+UI.prototype.showAlert =  function(message , className){
+
+    const alert = document.createElement('div');
+
+    alert.className = `alert ${className}`;
+
+
+    alert.appendChild(document.createTextNode(message));
+
+
+    //Get the parent which is the container to display inside of it 
+    const container = document.querySelector('.container');
+    const form = document.getElementById('todo-form');
+
+    container.insertBefore(alert,form);
+    // Time out 
+    setTimeout(function(){
+        document.querySelector('.alert').remove();
+    }, 2000);
+
+}
+
+
+
 
 //event Listener
 document.getElementById('todo-form').addEventListener('submit',function(e){
@@ -42,8 +79,30 @@ document.getElementById('todo-form').addEventListener('submit',function(e){
     //create instance of UI cinstructor 
     const ui = new UI();
 
+///validate
+    if(atodoinput=== '' || deadline === ''){
+        ui.showAlert('fill all fields', 'error')
+    }else{
+
     ui.addTodoTask(todotask);
 
+    ui.clearFields()
 
+    ui.showAlert('task has been added successfully' , 'success');
+
+    }
+
+    e.preventDefault()
+})
+
+
+
+///delete task event listener
+document.getElementById('todo-list').addEventListener('click',
+function(e){
+    //instantiate the UI CONTRUCTOR
+    const delUI = new UI();
+
+    delUI.deleteTasks(e.target)
     e.preventDefault()
 })
