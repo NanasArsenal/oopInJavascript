@@ -74,24 +74,6 @@ UI.prototype.deleteBook= function(target){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Event listeners for submit
 
     document.getElementById('book-form').addEventListener('submit',
